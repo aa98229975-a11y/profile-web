@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= profile.name %> | 프로필</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="hero">
+    <img class="photo" src="<%= profile.photo %>" alt="프로필 사진">
+    <h1><%= profile.name %></h1>
+    <p><%= profile.school %> · <%= profile.major %> · <%= profile.grade %></p>
+  </header>
+
+  <main>
+    <section>
+      <h2>학교 / 전공</h2>
+      <p><%= profile.school %> <%= profile.major %> <%= profile.grade %> 재학 중</p>
+    </section>
+
+    <section>
+      <h2>관심분야</h2>
+      <ul class="tags">
+        <% profile.interests.forEach(function(item) { %>
+          <li><%= item %></li>
+        <% }); %>
+      </ul>
+    </section>
+
+    <section>
+      <h2>수상내역</h2>
+      <table>
+        <thead>
+          <tr><th>연도</th><th>수상명</th><th>주최</th></tr>
+        </thead>
+        <tbody>
+          <% profile.awards.forEach(function(a) { %>
+            <tr>
+              <td><%= a.year %></td>
+              <td><%= a.title %></td>
+              <td><%= a.org %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>포부</h2>
+      <p><%= profile.goal %></p>
+    </section>
+
+    <section>
+      <h2>연락처</h2>
+      <ul class="contact">
+        <li>이메일: <%= profile.email %></li>
+        <li>전화: <%= profile.phone %></li>
+        <li>GitHub: <a href="<%= profile.github %>" target="_blank"><%= profile.github %></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© 2026 <%= profile.name %></footer>
+</body>
+</html>
